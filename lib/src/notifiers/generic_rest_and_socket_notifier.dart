@@ -111,10 +111,10 @@ class GenericRestAndSocketNotifier extends ChangeNotifier with AppLocalFilesApi 
   }
 
   Future<void> _loadAppState() async {
-    if (writeToLocalStorage ?? true) {
+    if (writeToLocalStorage) {
       var sharedPrefs = await SharedPreferences.getInstance();
       if (sharedPrefs.containsKey(keyName)) {
-        _instanceMap.addAll(jsonDecode(sharedPrefs.getString('${keyName}').toString()));
+        _instanceMap.addAll(jsonDecode(sharedPrefs.getString(keyName).toString()));
       } else {
         _instanceMap.addAll(_initialMap);
       }
@@ -128,18 +128,18 @@ class GenericRestAndSocketNotifier extends ChangeNotifier with AppLocalFilesApi 
   }
 
   Future<void> _saveAppState() async {
-    if (writeToLocalStorage ?? true) {
+    if (writeToLocalStorage) {
       var sharedPrefs = await SharedPreferences.getInstance();
       final Map<String, dynamic> _writeMap = {};
       _writeMap.addAll(_instanceMap);
-      _excludeKeys.forEach((key) {
+      for (var key in _excludeKeys) {
         _writeMap.remove(key);
 
         if (kDebugMode) {
           print("Removing key: $key");
         }
-      });
-      await sharedPrefs.setString('${keyName}', jsonEncode(_writeMap));
+      }
+      await sharedPrefs.setString(keyName, jsonEncode(_writeMap));
     } else {
       if (kDebugMode) {
         print("not write");
@@ -208,7 +208,7 @@ class GenericRestAndSocketNotifier extends ChangeNotifier with AppLocalFilesApi 
   }
 
   Future<void> onStartWs() async {
-    final url = Uri.parse("${baseSocketUrl}?sso=$ssoToken");
+    final url = Uri.parse("$baseSocketUrl?sso=$ssoToken");
 
     _ws_channel = WebSocketChannel.connect(url);
     stream = _ws_channel?.stream;
