@@ -9,9 +9,6 @@ class StashProvider extends StatelessWidget {
   final Widget rootWidget;
   final StashState stashState;
   const StashProvider({Key? key, required this.rootWidget, required this.stashState}) : super(key: key);
-
-  String get gameId => stashState.config['gameId'] ?? "universal_game_id";
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

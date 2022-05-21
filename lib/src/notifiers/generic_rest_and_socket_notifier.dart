@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GenericRestAndSocketNotifier extends ChangeNotifier with AppLocalFilesApi {
-  final String keyName;
   final Map<String, dynamic> config;
 
-  GenericRestAndSocketNotifier({required this.keyName, required this.config});
+  GenericRestAndSocketNotifier({required this.config});
 
+  String get keyName => config['keyName'] ?? "default_game_id";
   Map<String, String> get authHeaders => config['authHeaders'] ?? {};
   List<String> get keepKeys => config['keepKeys'] ?? [];
   List<String> get excludeKeys => config['excludeKeys'] ?? [];
