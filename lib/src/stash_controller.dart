@@ -17,9 +17,6 @@ class _StashControllerState extends State<StashController> {
     return Overlay(
       initialEntries: [
         OverlayEntry(builder: (BuildContext context) {
-          return widget.rootWidget;
-        }),
-        OverlayEntry(builder: (BuildContext context) {
           return Stack(
             children: [
               Positioned(
@@ -64,7 +61,10 @@ class _StashControllerState extends State<StashController> {
                   )),
             ],
           );
-        })
+        }),
+        OverlayEntry(builder: (BuildContext context) {
+          return widget.rootWidget;
+        }),
       ],
     );
   }
