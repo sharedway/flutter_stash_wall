@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stash_wall/src/stash_state.dart/';
+import 'package:provider/provider.dart';
 
 class StashController extends StatefulWidget {
   final Widget rootWidget;
@@ -25,7 +27,18 @@ class _StashControllerState extends State<StashController> {
                 "teste",
                 style: TextStyle(fontSize: 18, color: Colors.amber),
               ),
-            ))
+            )),
+        AnimatedPositioned(
+            right: 0,
+            left: 0,
+            top: (context.watch<StashState>().isReady) ? 0 : (MediaQuery.of(context).size.height),
+            bottom: 0,
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeInOutQuad,
+            child: Container(
+              color: Colors.black.withOpacity(0.6),
+              alignment: Alignment.center,
+            )),
       ],
     );
   }
