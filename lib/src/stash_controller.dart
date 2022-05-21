@@ -12,10 +12,14 @@ class StashController extends StatefulWidget {
 }
 
 class _StashControllerState extends State<StashController> {
+  double get h => WidgetsBinding.instance.window.physicalSize.height;
+  double get w => WidgetsBinding.instance.window.physicalSize.width;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
+    return SizedBox(
+      width: w,
+      height: h,
       child: Stack(
         fit: StackFit.expand,
         textDirection: TextDirection.rtl,
