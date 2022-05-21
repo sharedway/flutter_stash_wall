@@ -7,12 +7,13 @@ import '../stash_wall.dart';
 
 class StashProvider extends StatelessWidget {
   final Widget rootWidget;
-  const StashProvider({Key? key, required this.rootWidget}) : super(key: key);
+  final Map<String, dynamic> config;
+  const StashProvider({Key? key, required this.rootWidget, required this.config}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [ChangeNotifierProvider(create: (_) => StashState(keyName: "location_state_notifier_", config: {})..onInit())],
+        providers: [ChangeNotifierProvider(create: (_) => StashState(keyName: "location_state_notifier_", config: config)..onInit())],
         child: StashController(
           rootWidget: rootWidget,
         ));
