@@ -15,6 +15,8 @@ class _StashControllerState extends State<StashController> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
+      fit: StackFit.expand,
       children: [
         widget.rootWidget,
         Positioned(
