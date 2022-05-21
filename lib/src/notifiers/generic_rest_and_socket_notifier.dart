@@ -41,11 +41,11 @@ class GenericRestAndSocketNotifier extends ChangeNotifier with AppLocalFilesApi 
   bool get isReady => throw UnimplementedError("Propriedade para informar da inicializacao");
 
   List<String> get _keepKeys {
-    return keepKeys ?? [];
+    return keepKeys;
   }
 
   List<String> get _excludeKeys {
-    return excludeKeys ?? [];
+    return excludeKeys;
   }
 
   String? getStringKey(String key) {
