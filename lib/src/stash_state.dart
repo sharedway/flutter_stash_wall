@@ -5,6 +5,19 @@ class StashState extends GenericRestAndSocketNotifier {
   StashState({required Map<String, dynamic> config}) : super(config: config);
 
   bool _isReady = false;
+  bool _show = true;
+
+  bool get show => _show;
+
+  Future<void> showOverlay() async {
+    _show = true;
+    notifyListeners();
+  }
+
+  Future<void> hideOverlay() async {
+    _show = false;
+    notifyListeners();
+  }
 
   @override
   Future<void> onInit() async {
