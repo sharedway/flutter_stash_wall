@@ -6,9 +6,7 @@ import '../stash_wall.dart';
 
 class StashController extends StatefulWidget {
   final Widget rootWidget;
-
   const StashController({Key? key, required this.rootWidget}) : super(key: key);
-
   @override
   State<StashController> createState() => _StashControllerState();
 }
