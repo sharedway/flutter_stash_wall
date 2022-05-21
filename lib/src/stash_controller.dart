@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stash_wall/src/stash_state.dart/';
+
 import 'package:provider/provider.dart';
+
+import '../stash_wall.dart';
 
 class StashController extends StatefulWidget {
   final Widget rootWidget;
