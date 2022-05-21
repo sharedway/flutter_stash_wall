@@ -17,6 +17,7 @@ class _StashControllerState extends State<StashController> {
     return Container(
       alignment: Alignment.center,
       child: Stack(
+        fit: StackFit.expand,
         textDirection: TextDirection.rtl,
         children: [
           widget.rootWidget,
