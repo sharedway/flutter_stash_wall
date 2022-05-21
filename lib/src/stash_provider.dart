@@ -13,8 +13,11 @@ class StashProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [ChangeNotifierProvider(create: (_) => stashState..onInit())],
-        child: StashController(
-          rootWidget: rootWidget,
+        child: MaterialApp(
+          key: const Key("root_app_material"),
+          home: StashController(
+            rootWidget: rootWidget,
+          ),
         ));
   }
 }
