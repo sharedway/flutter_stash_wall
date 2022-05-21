@@ -10,10 +10,12 @@ class StashProvider extends StatelessWidget {
   final Map<String, dynamic> config;
   const StashProvider({Key? key, required this.rootWidget, required this.config}) : super(key: key);
 
+  String get gameId => config['gameId'] ?? "universal_game_id";
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [ChangeNotifierProvider(create: (_) => StashState(keyName: "location_state_notifier_", config: config)..onInit())],
+        providers: [ChangeNotifierProvider(create: (_) => StashState(keyName: "app_stash_state_notifier_$gameId", config: config)..onInit())],
         child: StashController(
           rootWidget: rootWidget,
         ));
