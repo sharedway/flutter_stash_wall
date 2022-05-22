@@ -25,25 +25,6 @@ class _StashControllerState extends State<StashController> {
         alignment: Alignment.center,
         children: [
           widget.rootWidget,
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              color: Colors.indigo,
-              child: Row(
-                children: [
-                  const Text(
-                    "teste",
-                    style: TextStyle(fontSize: 18, color: Colors.amber),
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        context.read<StashState>().showOverlay();
-                      },
-                      child: const Text("Show")),
-                ],
-              ),
-            ),
-          ),
           Positioned(
               bottom: 10,
               left: 10,
